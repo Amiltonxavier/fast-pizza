@@ -1,14 +1,14 @@
-import { ProductsProps, Status } from "@/types/Cart";
+import { type ProductsProps, Status } from "@/types/Cart";
 
 export const PRODUCTS: ProductsProps[] = [
   {
     id: 1,
     name: "Margherita",
     ingredients: "tomato, mozzarella, basil",
-    price: 12.00,
+    price: 12.0,
     status: Status.Available,
     quantity: 4,
-    img: "https://example.com/images/margherita.jpg"
+    img: "https://media.istockphoto.com/id/1494273340/photo/pizza-with-pepperoni-arugula-ketchup-tomatoes-and-cheese-in-a-plate-on-a-white-background.jpg?s=612x612&w=is&k=20&c=iw0rHbegFFGZjk1P-C-lsHN0sJtl4oQ6FGYg0eKuWbk=",
   },
   {
     id: 2,
@@ -17,52 +17,53 @@ export const PRODUCTS: ProductsProps[] = [
     status: Status.Sold_out,
     price: 0,
     quantity: 0,
-    img: "https://example.com/images/capricciosa.jpg"
+    img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1081&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
     name: "Romana",
     ingredients: "tomato, mozzarella, prosciutto",
-    price: 15.00,
+    price: 15.0,
     status: Status.Available,
     quantity: 7,
-    img: "https://example.com/images/romana.jpg"
+    img: "https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 4,
     name: "Prosciutto e Rucola",
     ingredients: "tomato, mozzarella, prosciutto, arugula",
-    price: 16.00,
+    price: 16.0,
     status: Status.Available,
     quantity: 1,
-    img: "https://example.com/images/prosciutto_e_rucola.jpg"
+    img: "https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  /* 
   {
     id: 5,
     name: "Diavola",
     ingredients: "tomato, mozzarella, spicy salami, chili flakes",
-    price: 16.00,
+    price: 16.0,
     status: Status.Available,
     quantity: 2,
-    img: "https://example.com/images/diavola.jpg"
+    img: "https://example.com/images/diavola.jpg",
   },
   {
     id: 6,
     name: "Vegetale",
     ingredients: "tomato, mozzarella, bell peppers, onions, mushrooms",
-    price: 13.00,
+    price: 13.0,
     status: Status.Available,
     quantity: 55,
-    img: "https://example.com/images/vegetale.jpg"
+    img: "https://example.com/images/vegetale.jpg",
   },
-  {
+   {
     id: 7,
     name: "Napoli",
     ingredients: "tomato, mozzarella, fres tomato, basil",
-    price: 16.00,
+    price: 16.0,
     status: Status.Available,
     quantity: 36,
-    img: "https://example.com/images/napoli.jpg"
+    img: "https://example.com/images/napoli.jpg",
   },
   {
     id: 8,
@@ -71,43 +72,43 @@ export const PRODUCTS: ProductsProps[] = [
     status: Status.Sold_out,
     price: 0,
     quantity: 0,
-    img: "https://example.com/images/siciliana.jpg"
+    img: "https://example.com/images/siciliana.jpg",
   },
   {
     id: 9,
     name: "Pepperoni",
     ingredients: "tomato, mozzarella, pepperoni",
-    price: 14.00,
+    price: 14.0,
     status: Status.Available,
     quantity: 160,
-    img: "https://example.com/images/pepperoni.jpg"
+    img: "https://example.com/images/pepperoni.jpg",
   },
   {
     id: 10,
     name: "Hawaiian",
     ingredients: "tomato, mozzarella, pineapple, ham",
-    price: 15.00,
+    price: 15.0,
     status: Status.Available,
     quantity: 10,
-    img: "https://example.com/images/hawaiian.jpg"
+    img: "https://example.com/images/hawaiian.jpg",
   },
   {
     id: 11,
     name: "Spinach and Mushroom",
     ingredients: "tomato, mozzarella, spinach, mushrooms",
-    price: 15.00,
+    price: 15.0,
     status: Status.Available,
     quantity: 30,
-    img: "https://example.com/images/spinach_and_mushroom.jpg"
+    img: "https://example.com/images/spinach_and_mushroom.jpg",
   },
   {
     id: 12,
     name: "Mediterranean",
     ingredients: "tomato, mozzarella, sun-drie tomatoes, olives, artichoke",
-    price: 16.00,
+    price: 16.0,
     status: Status.Available,
     quantity: 60,
-    img: "https://example.com/images/mediterranean.jpg"
+    img: "https://example.com/images/mediterranean.jpg",
   },
   {
     id: 13,
@@ -116,55 +117,55 @@ export const PRODUCTS: ProductsProps[] = [
     status: Status.Sold_out,
     price: 0,
     quantity: 0,
-    img: "https://example.com/images/greek.jpg"
+    img: "https://example.com/images/greek.jpg",
   },
   {
     id: 14,
     name: "Abruzzese",
     ingredients: "tomato, mozzarella, prosciutto, arugula",
-    price: 16.00,
+    price: 16.0,
     status: Status.Available,
     quantity: 360,
-    img: "https://example.com/images/abruzzese.jpg"
+    img: "https://example.com/images/abruzzese.jpg",
   },
   {
     id: 15,
     name: "Pesto Chicken",
     ingredients: "pesto, mozzarella, chicken, sun-drie tomatoes, spinach",
-    price: 16.00,
+    price: 16.0,
     status: Status.Available,
     quantity: 360,
-    img: "https://example.com/images/pesto_chicken.jpg"
+    img: "https://example.com/images/pesto_chicken.jpg",
   },
   {
     id: 16,
     name: "Eggplant Parmesan",
     ingredients: "marinara, mozzarella, eggplant, parmesan",
-    price: 15.00,
+    price: 15.0,
     status: Status.Available,
     quantity: 5,
-    img: "https://example.com/images/eggplant_parmesan.jpg"
+    img: "https://example.com/images/eggplant_parmesan.jpg",
   },
   {
     id: 17,
     name: "Roasted Veggie",
     ingredients: "marinara, mozzarella, zucchini, eggplant, peppers, onions",
-    price: 15.00,
+    price: 15.0,
     status: Status.Available,
     quantity: 12,
-    img: "https://example.com/images/roasted_veggie.jpg"
+    img: "https://example.com/images/roasted_veggie.jpg",
   },
   {
     id: 18,
     name: "Tofu and Mushroom",
     ingredients: "marinara, mozzarella, tofu, mushrooms, bell peppers",
-    price: 15.00,
+    price: 15.0,
     status: Status.Available,
     quantity: 8,
-    img: "https://example.com/images/tofu_and_mushroom.jpg"
-  }
+    img: "https://example.com/images/tofu_and_mushroom.jpg",
+  }, */
 ];
 
-export const CONSTANT =  {
-  PRODUCTS
-}
+export const CONSTANT = {
+  PRODUCTS,
+};

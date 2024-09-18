@@ -4,9 +4,11 @@ import React from 'react'
 import { Button } from './Button'
 import Image from 'next/image'
 import img from '../../assets/pizza-1.jpg'
-import { CartProps, ProductsProps, Status } from '@/types/Cart'
+import type { ProductsProps } from '@/types/Cart'
 import { ConvertCurrency } from '@/utils/currency'
 import { useCart } from '@/app/context/cart'
+import { Plus } from 'lucide-react'
+import { ControlesButtons } from './controlesButtons'
 
 type CartItemProps = {
     product: ProductsProps
@@ -14,7 +16,7 @@ type CartItemProps = {
 }
 
 export function CartItem({ product, addToCart }: CartItemProps) {
-    const { cart, addQuantity, RemoveQuantity } = useCart()
+    const { cart, addQuantity, RemoveQuantity, getTotalQuantityInCart, removerProduct } = useCart()
 
 
     const isInCart = (id: number | string) => {
@@ -24,7 +26,8 @@ export function CartItem({ product, addToCart }: CartItemProps) {
     return (
         <div className='flex w-[800px] p-2'>
             <div className='w-28'>
-                <Image src={img}
+                <Image
+                    src={product.img}
                     quality={100}
                     width={100}
                     height={100}
@@ -36,41 +39,10 @@ export function CartItem({ product, addToCart }: CartItemProps) {
                 <h5 className='font-medium'>{product.name}</h5>
                 <p className='text-zinc-500 italic font-mono'>{product.ingredients}</p>
                 <div className='flex justify-between items-end w-full'>
-                    <small>{ConvertCurrency.CurrencytoKwanza(product.price)}</small>
+                    <small className='text-sm'>{ConvertCurrency.CurrencytoKwanza(product.price)}</small>
                     {
                         isInCart(product.id) ? (
-                            <div className='flex items-center gap-3 justify-between'>
-                                <div className='flex items-center gap-2'>
-                                    <Button
-                                        variant='primary'
-                                        size='small'
-                                        className='ml-auto'
-                                        type='button'
-                                        onClick={() => RemoveQuantity(product.id)}
-                                    >
-                                        -
-                                    </Button>
-                                    <span>{product.quantity}</span>
-                                    <Button
-                                        variant='primary'
-                                        size='small'
-                                        className='ml-auto'
-                                        type='button'
-                                        onClick={() => addQuantity(product.id)}
-                                    >
-                                        +
-                                    </Button>
-                                </div>
-                                <Button
-                                    variant='primary'
-                                    size='small'
-                                    className='ml-auto'
-                                    type='button'
-                                    onClick={() => addToCart(product)}
-                                >
-                                    Apagar do carinho
-                                </Button>
-                            </div>
+                            <ControlesButtons id={product.id} />
                         ) : (
                             <>
                                 {

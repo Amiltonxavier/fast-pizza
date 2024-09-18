@@ -1,6 +1,6 @@
 'use client'
-import { CartProps, ProductsProps } from '@/types/Cart'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import type { ProductsProps } from '@/types/Cart'
+import React, { createContext, type ReactNode, useContext, useState } from 'react'
 
 
 
@@ -9,7 +9,11 @@ type Cart = {
   addProductInCart: (newProduct: ProductsProps) => void
   RemoveQuantity: (id: string | number) => void
   addQuantity: (id: string | number) => void
-  getTotalInCart: (id: number | string) => void
+  getTotalPriceInCart: () => number | null
+  getTotalQuantityInCart: (id: number | string) => number | null
+  getTotalInCart: () => number,
+  removerProduct: (id: string | number) => void,
+  cleanCart: () => void
 }
 type CartContextProvinderProps = {
   children: ReactNode
@@ -22,7 +26,12 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
 
 
   function addProductInCart(newProduct: ProductsProps) {
-    setCart(state => [...state, newProduct])
+    const result = {
+      ...newProduct,
+      quantity: 1
+    }
+
+    setCart(state => [...state, result])
   }
 
   function addQuantity(id: string | number) {
@@ -38,12 +47,11 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
       if (item.id === id) {
         return {
           ...item,
-          quantity: controles(item.quantity)
+          quantity: item.quantity + 1
         }
       }
       return item
     })
-    console.log(result)
     setCart(result)
   }
 
@@ -69,12 +77,49 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
     setCart(result)
   }
 
-  const getTotalInCart = (id: number | string) => {
-    return cart.find((item) => (item.quantity))
-}
+  const getTotalPriceInCart = (): number => {
+    return cart.reduce((acc, current) => {
+      return acc + current.price * current.quantity
+    }, 0)
+  }
+
+
+  const getTotalInCart = () => {
+    return cart.reduce((acc, current) => {
+      return acc + current.quantity
+    }, 0)
+  }
+
+  const removerProduct = (id: number | string) => {
+    setCart(state => state.filter((item) => item.id !== id))
+  }
+
+  const cleanCart = () => {
+    setCart([])
+  }
+
+  const getTotalQuantityInCart = (id: number | string) => {
+    const item = cart.find((item) => item.id === id);
+
+    if (item) {
+      return item.quantity;
+    }
+
+    return null;
+  };
 
   return (
-    <CartContext.Provider value={{ cart, addProductInCart, RemoveQuantity, addQuantity, getTotalInCart }}>
+    <CartContext.Provider value={{
+      getTotalInCart,
+      cleanCart,
+      getTotalQuantityInCart,
+      cart,
+      addProductInCart,
+      RemoveQuantity,
+      addQuantity,
+      getTotalPriceInCart,
+      removerProduct
+    }}>
       {children}
     </CartContext.Provider>
   )

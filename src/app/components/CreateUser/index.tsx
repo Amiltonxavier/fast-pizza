@@ -1,9 +1,10 @@
 'use client'
-import React, { ButtonHTMLAttributes, ChangeEvent, FormEvent, MouseEvent, useState } from 'react'
+import React, { type ChangeEvent, type FormEvent, useState } from 'react'
 import { Input } from '../ui/input'
 import { Button } from '../ui/Button'
 import { useRouter } from 'next/navigation'
 import { useUser } from '@/app/context/user'
+import Link from 'next/link'
 
 
 export function CreateUser() {
@@ -26,20 +27,30 @@ export function CreateUser() {
     }
 
     return (
-        <form onSubmit={handleSubmitForm} className="space-y-8 mx-auto">
-            <Input
-                type="text"
-                placeholder="Seu Nome Completo"
-                onChange={handleChange}
-            />
+        <>
             {
-                (
-                    <Button type='submit' variant='primary'>
-                        Pedir
-                    </Button>
+                user ? (
+                    <Link href="/menu">
+                        <Button variant='primary' type='button'>
+                            Continuar o pedido, {user.fullname}
+                        </Button>
+                    </Link>
+                ) : (
+                    <form onSubmit={handleSubmitForm} className="space-y-8 mx-auto">
+                        <Input
+                            type="text"
+                            placeholder="Seu Nome Completo"
+                            onChange={handleChange}
+                            className='bg-white'
+                        />
+
+                        <Button type='submit' variant='primary'>
+                            Pedir
+                        </Button>
+                    </form>
                 )
             }
 
-        </form>
+        </>
     )
 }

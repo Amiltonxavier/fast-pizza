@@ -3,7 +3,7 @@
 import { CartItem } from '@/app/components/ui/CartItem'
 import { CONSTANT } from '@/app/constants'
 import { useCart } from '@/app/context/cart'
-import { ProductsProps } from '@/types/Cart'
+import type { ProductsProps } from '@/types/Cart'
 import React, { useState } from 'react'
 
 export default function Menu() {
@@ -23,11 +23,11 @@ export default function Menu() {
       return item
     })
 
-    
+
     setProducts(result)
   }
   return (
-    <div className='flex flex-col gap-4 divide-y-2 py-4 w-full'>
+    <div className='flex flex-col gap-4 divide-y-2 w-full'>
       {
         products.map((item) => {
           return (
