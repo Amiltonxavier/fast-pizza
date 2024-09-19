@@ -4,7 +4,12 @@ import React from 'react'
 
 export function DisplayUsername() {
   const { user } = useUser()
+  if (!user) return
   return (
-    <p className='font-mono font-semibold mx-auto uppercase text-xl'>{user?.fullname}</p>
+    <p
+      className='font-mono font-semibold mx-auto uppercase text-xl'
+    >
+      {user.fullname}
+    </p>
   )
 }

@@ -3,10 +3,10 @@ import { useCart } from '@/app/context/cart'
 import React from 'react'
 
 export function TotalInCart() {
-    const { cart, getTotalPriceInCart, getTotalInCart } = useCart()
+    const { getTotalPriceInCart, totalInCart } = useCart()
     return (
         <p className='space-x-4'>
-            <span>{getTotalInCart()}</span>
+            <span>{totalInCart}</span>
             <span>{getTotalPriceInCart()?.toLocaleString('pt-AO', {
                 style: 'currency',
                 currency: 'AOA'

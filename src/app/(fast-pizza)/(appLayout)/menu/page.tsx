@@ -1,14 +1,23 @@
 'use client'
-
+import { ProductService } from '@/api/products'
 import { CartItem } from '@/app/components/ui/CartItem'
-import { CONSTANT } from '@/app/constants'
 import { useCart } from '@/app/context/cart'
 import type { ProductsProps } from '@/types/Cart'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Menu() {
-  const [products, setProducts] = useState<ProductsProps[]>(CONSTANT.PRODUCTS)
+  const [products, setProducts] = useState<ProductsProps[]>([])
   const { addProductInCart } = useCart()
+  const productsService = new ProductService()
+
+  const getProducts = async () => {
+    const result = await productsService.get()
+    setProducts(result)
+  }
+
+  useEffect(() => {
+    getProducts()
+  }, [])
 
   function handleAddProductInToCart(product: ProductsProps) {
     addProductInCart(product)
@@ -22,8 +31,6 @@ export default function Menu() {
       }
       return item
     })
-
-
     setProducts(result)
   }
   return (

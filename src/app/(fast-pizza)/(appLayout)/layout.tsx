@@ -11,7 +11,7 @@ type LayoutProps = {
 export default function layout({ children }: LayoutProps) {
     const { user } = useUser()
     const router = useRouter()
-    if (!user) router.push('/')
+    if (!user) router.replace('/')
     return (
         <>
             {children}

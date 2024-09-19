@@ -10,38 +10,36 @@ type ControlesButtonsProps = {
 
 
 export function ControlesButtons({ id }: ControlesButtonsProps) {
-    const { RemoveQuantity, addQuantity, removerProduct, getTotalQuantityInCart } = useCart()
+    const { RemoveQuantity, addQuantity, removerProductFromCart, getTotalQuantityInCart } = useCart()
 
     return (
         <div className='flex items-center gap-3 justify-between'>
             <div className='flex items-center gap-2'>
                 <Button
                     variant='primary'
-                    size='small'
-                    className='ml-auto rounded-full'
+                    size='lg'
                     type='button'
                     onClick={() => RemoveQuantity(id)}
                 >
-                    <Minus className='size-2' />
+                    <Minus className='size-4 font-bold' />
                 </Button>
                 <span>{getTotalQuantityInCart(id)}</span>
                 <Button
                     variant='primary'
-                    size='small'
-                    className='ml-auto'
+                    size='lg'
                     type='button'
                     onClick={() => addQuantity(id)}
                 >
-                    <Plus className='size-2' />
+                    <Plus className='size-4 font-bold' />
                 </Button>
             </div>
 
             <Button
                 variant='primary'
-                size='small'
+                size='lg'
                 className='ml-auto'
                 type='button'
-                onClick={() => removerProduct(id)}
+                onClick={() => removerProductFromCart(id)}
             >
                 Apagar do carinho
             </Button>

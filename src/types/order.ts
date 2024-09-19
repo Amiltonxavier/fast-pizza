@@ -6,7 +6,7 @@ export type OrderTypes = {
     price: number;
     quantity: number;
   }[];
-  orderId: string | number;
+  id: string | number;
   priority: boolean;
   user: userTypes;
 };

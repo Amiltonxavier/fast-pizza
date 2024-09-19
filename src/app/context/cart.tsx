@@ -9,11 +9,11 @@ type Cart = {
   addProductInCart: (newProduct: ProductsProps) => void
   RemoveQuantity: (id: string | number) => void
   addQuantity: (id: string | number) => void
-  getTotalPriceInCart: () => number | null
+  getTotalPriceInCart: () => number,
   getTotalQuantityInCart: (id: number | string) => number | null
-  getTotalInCart: () => number,
-  removerProduct: (id: string | number) => void,
-  cleanCart: () => void
+  totalInCart: number,
+  removerProductFromCart: (id: string | number) => void,
+  cleanCart: () => void,
 }
 type CartContextProvinderProps = {
   children: ReactNode
@@ -26,12 +26,11 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
 
 
   function addProductInCart(newProduct: ProductsProps) {
-    const result = {
+    setCart(state => [...state, {
       ...newProduct,
       quantity: 1
     }
-
-    setCart(state => [...state, result])
+    ])
   }
 
   function addQuantity(id: string | number) {
@@ -84,13 +83,12 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
   }
 
 
-  const getTotalInCart = () => {
-    return cart.reduce((acc, current) => {
-      return acc + current.quantity
-    }, 0)
-  }
+  const totalInCart = cart.reduce((acc, current) => {
+    return acc + current.quantity
+  }, 0)
 
-  const removerProduct = (id: number | string) => {
+
+  const removerProductFromCart = (id: number | string) => {
     setCart(state => state.filter((item) => item.id !== id))
   }
 
@@ -110,7 +108,7 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
 
   return (
     <CartContext.Provider value={{
-      getTotalInCart,
+      totalInCart,
       cleanCart,
       getTotalQuantityInCart,
       cart,
@@ -118,7 +116,7 @@ export function CartContextProvinder({ children }: CartContextProvinderProps) {
       RemoveQuantity,
       addQuantity,
       getTotalPriceInCart,
-      removerProduct
+      removerProductFromCart
     }}>
       {children}
     </CartContext.Provider>

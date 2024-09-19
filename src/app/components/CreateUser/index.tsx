@@ -12,8 +12,6 @@ export function CreateUser() {
     const { user, registerUser } = useUser()
     const [name, setName] = useState('');
 
-
-
     function handleSubmitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
@@ -27,16 +25,24 @@ export function CreateUser() {
     }
 
     return (
-        <>
+        <div className='flex flex-col items-center justify-center'>
             {
                 user ? (
                     <Link href="/menu">
-                        <Button variant='primary' type='button'>
+                        <Button
+                            variant='primary'
+                            type='button'
+                            size='lg'
+                        >
                             Continuar o pedido, {user.fullname}
                         </Button>
                     </Link>
                 ) : (
-                    <form onSubmit={handleSubmitForm} className="space-y-8 mx-auto">
+                    <form
+                        onSubmit={handleSubmitForm}
+                        className="space-y-8"
+
+                    >
                         <Input
                             type="text"
                             placeholder="Seu Nome Completo"
@@ -44,13 +50,17 @@ export function CreateUser() {
                             className='bg-white'
                         />
 
-                        <Button type='submit' variant='primary'>
+                        <Button
+                            type='submit'
+                            variant='primary'
+                            size='lg'
+                        >
                             Pedir
                         </Button>
                     </form>
                 )
             }
 
-        </>
+        </div>
     )
 }

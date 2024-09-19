@@ -1,13 +1,10 @@
 'use client'
-
 import React from 'react'
 import { Button } from './Button'
 import Image from 'next/image'
-import img from '../../assets/pizza-1.jpg'
 import type { ProductsProps } from '@/types/Cart'
 import { ConvertCurrency } from '@/utils/currency'
 import { useCart } from '@/app/context/cart'
-import { Plus } from 'lucide-react'
 import { ControlesButtons } from './controlesButtons'
 
 type CartItemProps = {
@@ -16,30 +13,35 @@ type CartItemProps = {
 }
 
 export function CartItem({ product, addToCart }: CartItemProps) {
-    const { cart, addQuantity, RemoveQuantity, getTotalQuantityInCart, removerProduct } = useCart()
+    const { cart } = useCart()
 
 
     const isInCart = (id: number | string) => {
-        return cart.find(item => (item.id === id))
+        return !!cart.find(item => item.id === id)
     }
 
     return (
-        <div className='flex w-[800px] p-2'>
-            <div className='w-28'>
+        <div className='flex gap-2'>
+            <div className='size-32 overflow-hidden'>
                 <Image
                     src={product.img}
                     quality={100}
                     width={100}
                     height={100}
                     alt='pizza'
-                    className='w-full'
+                    className='h-full w-full object-cover'
                 />
             </div>
-            <div className='pl-2 flex-1'>
+
+            <div className='flex flex-col gap-0.5 w-full'>
                 <h5 className='font-medium'>{product.name}</h5>
-                <p className='text-zinc-500 italic font-mono'>{product.ingredients}</p>
-                <div className='flex justify-between items-end w-full'>
-                    <small className='text-sm'>{ConvertCurrency.CurrencytoKwanza(product.price)}</small>
+                <p className=' text-zinc-500 italic font-mono text-base capitalize'>
+                    {product.ingredients}
+                </p>
+                <div className='mt-auto flex justify-between items-end'>
+                    <p className='text-sm'>
+                        {ConvertCurrency.CurrencytoKwanza(product.price)}
+                    </p>
                     {
                         isInCart(product.id) ? (
                             <ControlesButtons id={product.id} />
@@ -49,7 +51,7 @@ export function CartItem({ product, addToCart }: CartItemProps) {
                                     product.quantity > 0 && (
                                         <Button
                                             variant='primary'
-                                            size='small'
+                                            size='lg'
                                             className='ml-auto'
                                             type='button'
                                             onClick={() => addToCart(product)}

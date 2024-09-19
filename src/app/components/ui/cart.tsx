@@ -6,9 +6,9 @@ import { TotalInCart } from '../total -in-cart'
 import { useCart } from '@/app/context/cart'
 
 export function Cart() {
-  const { cart } = useCart()
+  const { totalInCart } = useCart()
 
-  if (cart.length === 0) return
+  if (totalInCart === 0) return
   return (
     <div className='fixed bottom-0 bg-stone-800 w-full'>
       <div className='flex items-center p-8 justify-between font-mono uppercase text-stone-100 font-medium text-2xl'>
