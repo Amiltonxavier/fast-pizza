@@ -1,4 +1,4 @@
-import { OrderTypes } from "@/types/order";
+import type { OrderTypes } from "@/types/order";
 import { api } from "./api";
 
 export class OrderService {
@@ -11,6 +11,7 @@ export class OrderService {
   }
 
   async getById(Orderid: string | number) {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const result = await api.get<OrderTypes>(`/${this.router}/${Orderid}`);
 
     return result.data;

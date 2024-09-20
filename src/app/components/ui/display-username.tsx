@@ -1,5 +1,5 @@
 'use client'
-import { useUser } from '@/app/context/user'
+import { useUser } from '@/context/user'
 import React from 'react'
 
 export function DisplayUsername() {

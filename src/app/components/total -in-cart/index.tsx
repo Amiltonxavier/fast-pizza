@@ -1,5 +1,5 @@
 'use client'
-import { useCart } from '@/app/context/cart'
+import { useCart } from '@/context/cart'
 import React from 'react'
 
 export function TotalInCart() {

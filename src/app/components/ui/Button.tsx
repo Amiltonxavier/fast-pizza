@@ -33,7 +33,7 @@ type ButtonProps = ComponentProps<'button'> & {
 const variant: variantProps = {
     default: 'bg-transparent text-zinc-700 hover:bg-transparent/40',
     outline:
-        ' text-slate-600 border bg-transparent hover:text-blue-500 hover:border-blue-500 shadow-sm',
+        'rounded-full text-stone-700/90 hover:text-stone-700 w-full border bg-transparent hover:bg-stone-200 shadow-sm',
     ghost:
         'text-gray-400 hover:text-gray-700 bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto',
     link:

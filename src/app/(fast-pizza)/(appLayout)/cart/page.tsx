@@ -3,7 +3,7 @@
 import { Button } from '@/app/components/ui/Button'
 import { DisplayUsername } from '@/app/components/ui/display-username'
 import { ListProduct } from '@/app/components/ui/list-product'
-import { useCart } from '@/app/context/cart'
+import { useCart } from '@/context/cart'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -37,16 +37,16 @@ export default function CartPage() {
                                 <Link href="/order" className='w-full block'>
                                     <Button
                                         variant='primary'
-                                        size='medium'
+                                        size='lg'
                                     >
                                         PEÇA PIZZA
                                     </Button>
                                 </Link>
                                 <Button
-                                    variant='secondary'
+                                    variant='outline'
                                     type='button'
                                     onClick={cleanCart}
-                                    size='medium'
+                                    size='lg'
                                 >
                                     Limpar carrinho
                                 </Button>

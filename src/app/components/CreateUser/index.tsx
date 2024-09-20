@@ -3,7 +3,7 @@ import React, { type ChangeEvent, type FormEvent, useState } from 'react'
 import { Input } from '../ui/input'
 import { Button } from '../ui/Button'
 import { useRouter } from 'next/navigation'
-import { useUser } from '@/app/context/user'
+import { useUser } from '@/context/user'
 import Link from 'next/link'
 
 

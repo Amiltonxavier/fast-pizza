@@ -2,9 +2,9 @@
 import { OrderService } from '@/api/orders'
 import { Button } from '@/app/components/ui/Button'
 import { Input } from '@/app/components/ui/input'
-import { useCart } from '@/app/context/cart'
-import { useUser } from '@/app/context/user'
-import { userTypes } from '@/types/user'
+import { useCart } from '@/context/cart'
+import { useUser } from '@/context/user'
+import type { userTypes } from '@/types/user'
 import { useRouter } from 'next/navigation'
 import React, { type FormEvent } from 'react'
 
@@ -118,7 +118,8 @@ export default function Order() {
                 </div>
 
                 <div className='block'>
-                    <Button variant='primary'
+                    <Button
+                        variant='primary'
                         size='lg'
                         type='submit'
                     >

@@ -1,5 +1,5 @@
 'use client'
-import { useUser } from '@/app/context/user'
+import { useUser } from '@/context/user'
 import { useRouter } from 'next/navigation'
 import React, { type ReactNode } from 'react'
 

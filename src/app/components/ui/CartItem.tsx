@@ -4,20 +4,26 @@ import { Button } from './Button'
 import Image from 'next/image'
 import type { ProductsProps } from '@/types/Cart'
 import { ConvertCurrency } from '@/utils/currency'
-import { useCart } from '@/app/context/cart'
+import { useCart } from '@/context/cart'
 import { ControlesButtons } from './controlesButtons'
 
 type CartItemProps = {
     product: ProductsProps
-    addToCart: (product: ProductsProps) => void
+    addToCart?: (product: ProductsProps) => void
 }
 
-export function CartItem({ product, addToCart }: CartItemProps) {
-    const { cart } = useCart()
+export function CartItem({ product }: CartItemProps) {
+    const { cart, addProductInCart } = useCart()
 
 
     const isInCart = (id: number | string) => {
         return !!cart.find(item => item.id === id)
+    }
+
+
+    function handleAddProductInToCart() {
+        addProductInCart(product)
+
     }
 
     return (
@@ -54,7 +60,7 @@ export function CartItem({ product, addToCart }: CartItemProps) {
                                             size='lg'
                                             className='ml-auto'
                                             type='button'
-                                            onClick={() => addToCart(product)}
+                                            onClick={handleAddProductInToCart}
                                         >
                                             Add ao carinho
                                         </Button>

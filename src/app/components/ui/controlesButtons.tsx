@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Button } from './Button'
-import { useCart } from '@/app/context/cart'
+import { useCart } from '@/context/cart'
 import { Minus, Plus } from 'lucide-react'
 
 type ControlesButtonsProps = {

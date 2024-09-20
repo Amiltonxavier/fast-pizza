@@ -5,7 +5,7 @@ export class ProductService {
   private router = "products";
 
   async get() {
-    await new Promise((resolve) => setTimeout(resolve));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const result = await api.get<ProductsProps[]>(`/${this.router}`);
 
     return result.data;
