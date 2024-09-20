@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export function Header() {
   return (
-    <nav className='sticky w-full top-0 h-20 flex justify-between bg-yellow-400 items-center px-8 shadow-sm'>
+    <nav className='sticky w-full z-[1000] overflow-hidden top-0 h-16 transition-all duration-150 ease-in sm:h-20 flex justify-between bg-yellow-400 items-center px-8 shadow-sm'>
       <Link href="/">
         <h3 className='text-lg sm:text-2xl leading-tight font-light tracking-widest uppercase'>
           Fast Pizza Co.

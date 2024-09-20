@@ -33,11 +33,12 @@ export default function CartPage() {
                                 }
 
                             </ul>
-                            <div className='flex gap-2 items-center w-[400px]'>
+                            <div className='sm:flex gap-2 items-center'>
                                 <Link href="/order" className='w-full block'>
                                     <Button
                                         variant='primary'
                                         size='lg'
+                                        className='w-full'
                                     >
                                         PEÇA PIZZA
                                     </Button>

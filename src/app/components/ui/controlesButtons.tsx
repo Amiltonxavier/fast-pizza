@@ -13,7 +13,7 @@ export function ControlesButtons({ id }: ControlesButtonsProps) {
     const { RemoveQuantity, addQuantity, removerProductFromCart, getTotalQuantityInCart } = useCart()
 
     return (
-        <div className='flex items-center gap-3 justify-between'>
+        <div className='flex items-center gap-3 justify-between flex-wrap'>
             <div className='flex items-center gap-2'>
                 <Button
                     variant='primary'
@@ -23,7 +23,7 @@ export function ControlesButtons({ id }: ControlesButtonsProps) {
                 >
                     <Minus className='size-4 font-bold' />
                 </Button>
-                <span>{getTotalQuantityInCart(id)}</span>
+                <span className='block'>{getTotalQuantityInCart(id)}</span>
                 <Button
                     variant='primary'
                     size='lg'
@@ -33,11 +33,9 @@ export function ControlesButtons({ id }: ControlesButtonsProps) {
                     <Plus className='size-4 font-bold' />
                 </Button>
             </div>
-
             <Button
                 variant='primary'
                 size='lg'
-                className='ml-auto'
                 type='button'
                 onClick={() => removerProductFromCart(id)}
             >

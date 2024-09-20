@@ -19,9 +19,9 @@ type sizeProps = {
 
 const size: sizeProps = {
     default: 'h-10 px-4 py-2',
-    sm: 'h-9 rounded-md px-3',
+    sm: 'py-1 px-2',
     xs: 'h-8 px-2.5',
-    lg: 'h-8 sm:h-11 rounded-md px-8 sm:px-5',
+    lg: 'py-2 py-3 sm:py-4 sm:py-4 px-6 sm:px-5 text-xs sm:text-sm',
     icon: 'h-10 w-10',
 };
 
@@ -52,7 +52,7 @@ export function Button({ className, variant = 'default', size = 'default', ...pr
     return (
         <button
             className={twMerge(
-                'duration-100 font-bold font-mono flex justify-center items-center uppercase',
+                'transition-all duration-100 font-bold font-mono flex justify-center items-center uppercase',
                 buttonVariants(size, variant),
                 className
             )}

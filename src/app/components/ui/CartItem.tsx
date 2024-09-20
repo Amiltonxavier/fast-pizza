@@ -35,11 +35,11 @@ export function CartItem({ product }: CartItemProps) {
                     width={100}
                     height={100}
                     alt='pizza'
-                    className='h-full w-full object-cover'
+                    className={`h-32 w-32 object-cover ${product.quantity <= 0 && 'grayscale'}`}
                 />
             </div>
 
-            <div className='flex flex-col gap-0.5 w-full'>
+            <div className='flex flex-col gap-0.5 w-full grow'>
                 <h5 className='font-medium'>{product.name}</h5>
                 <p className=' text-zinc-500 italic font-mono text-base capitalize'>
                     {product.ingredients}

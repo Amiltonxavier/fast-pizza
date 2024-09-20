@@ -9,4 +9,5 @@ export type OrderTypes = {
   id: string | number;
   priority: boolean;
   user: userTypes;
+  total: number;
 };

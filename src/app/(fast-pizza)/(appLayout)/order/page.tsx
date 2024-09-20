@@ -5,15 +5,17 @@ import { Input } from '@/app/components/ui/input'
 import { useCart } from '@/context/cart'
 import { useUser } from '@/context/user'
 import type { userTypes } from '@/types/user'
+import type { Metadata } from 'next'
 import { useRouter } from 'next/navigation'
 import React, { type FormEvent } from 'react'
 
+
+
 export default function Order() {
     const { user, updateUser } = useUser()
-    const { cart, cleanCart } = useCart()
+    const { cart, cleanCart, getTotalPriceInCart } = useCart()
     const router = useRouter()
     const orderService = new OrderService()
-
     async function handleSubmitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
@@ -21,9 +23,7 @@ export default function Order() {
         const phone = formData.get('phone' as string) as string | null ?? undefined
         const address = formData.get('address' as string) as string | null ?? undefined
         const email = formData.get('email' as string) as string | null ?? undefined
-        const priority = formData.get('priority' as string)
-
-        console.log(priority)
+        const priority = formData.get('priority' as string) as string
 
         updateUser({ address, phone, email } as userTypes)
 
@@ -34,11 +34,13 @@ export default function Order() {
                 quantity: item.quantity
             }
         })
+        if (result.length <= 0) return
 
         try {
             const response = await orderService.post({
                 product: [...result],
-                priority: true,
+                priority: priority?.includes('on') as boolean,
+                total: getTotalPriceInCart(),
                 user: {
                     phone,
                     fullname: user?.fullname,
@@ -55,6 +57,7 @@ export default function Order() {
         } catch (error) {
             console.error('Erro ao realizar o pedido:', error);
         }
+
     }
 
     return (
@@ -109,13 +112,19 @@ export default function Order() {
                     </div>
 
                 </div>
-                <input id="priority" type='checkbox' className='' />
-                <div className='col-span-2'>
-                    <label
-                        htmlFor="priority"
-                        className='font-mono text-xl'>Quer dar prioridade ao seu pedido?
+                <div className='col-span-3 flex items-center gap-4'>
+                    <input
+                        id="c1-13"
+                        type="checkbox"
+                        name='priority'
+                        className="size-7 appearance-none bg-white border border-gray-300 rounded-md checked:bg-yellow-400 checked:ring-2 checked:ring-yellow-400 ring-offset-2 transition-all cursor-pointer
+                        disabled:bg-gray-100 disabled:cursor-not-allowed disabled:border-gray-200 disabled:checked:bg-gray-200 relative"
+                    />
+                    <label htmlFor="c1-13" className="font-mono text-xl font-medium cursor-pointer">
+                        Quer dar prioridade ao seu pedido?
                     </label>
                 </div>
+
 
                 <div className='block'>
                     <Button
@@ -123,7 +132,7 @@ export default function Order() {
                         size='lg'
                         type='submit'
                     >
-                        <span>peça agora</span>
+                        pedir agora {getTotalPriceInCart()}
                     </Button>
                 </div>
 

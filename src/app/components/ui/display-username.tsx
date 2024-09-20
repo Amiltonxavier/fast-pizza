@@ -1,13 +1,19 @@
 'use client'
 import { useUser } from '@/context/user'
-import React from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 export function DisplayUsername() {
   const { user } = useUser()
-  if (!user) return
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient || !user) return null
   return (
     <p
-      className='font-mono font-semibold mx-auto uppercase text-xl'
+      className='hidden sm:block font-mono font-medium sm:font-semibold mx-auto uppercase sm:text-xl text-lg text-wrap'
     >
       {user.fullname}
     </p>

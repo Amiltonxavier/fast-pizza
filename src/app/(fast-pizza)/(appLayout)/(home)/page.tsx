@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import { CreateUser } from "../../../components/CreateUser";
+
+export const metadata: Metadata = {
+  title: 'Início'
+}
 export default function Home() {
   return (
     <div className="flex flex-col gap-16">
