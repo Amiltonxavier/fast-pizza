@@ -8,7 +8,7 @@ type variantStatusProps = {
 }
 
 type StatusProps = ComponentProps<'span'> & {
-    status?: variantStatusProps
+    status?: keyof variantStatusProps
 }
 
 const status: variantStatusProps = {

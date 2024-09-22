@@ -13,11 +13,9 @@ export default function layout({ children }: LayoutProps) {
   return (
     <UserContextProvider>
       <CartContextProvinder>
-        <div
-          className='flex max-w-[1600px] flex-col gap-4 bg-stone-100 text-stone-700 min-h-screen'
-        >
+        <div className='flex flex-col min-h-screen bg-stone-100 text-stone-700'>
           <Header />
-          <div className='px-2 sm:max-w-4xl mx-auto w-full mb-12 min-h-full'>
+          <div className='flex-grow px-2 sm:max-w-4xl mx-auto w-full mt-4 mb-12 pb-20 animate-fadeIn'>
             {children}
           </div>
           <Cart />

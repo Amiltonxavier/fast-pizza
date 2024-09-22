@@ -11,14 +11,12 @@ export function Cart() {
   if (totalInCart === 0) return
   return (
 
-    <div className='fixed bottom-0 left-0 bg-stone-800 w-full'>
+    <div className='sticky bottom-0 bg-stone-800 w-full z-10'>
       <div className='transition-all duration-150 ease-in-out flex flex-col sm:flex-row justify-start items-center py-8 px-4 sm:px-8 sm:justify-between font-mono uppercase text-stone-100 font-medium text-xl sm:text-2xl'>
         <TotalInCart />
-
-        <Link href="/cart" className='flex items-center gap-4'>
+        <Link href="/cart" className='flex items-center gap-4 hover:underline'>
           Abrir Carrinho <ArrowRight />
         </Link>
-
       </div>
     </div>
   )

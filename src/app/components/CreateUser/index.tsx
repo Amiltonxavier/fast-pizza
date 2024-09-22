@@ -25,7 +25,7 @@ export function CreateUser() {
     }
 
     return (
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center w-full'>
             {
                 user ? (
                     <Link href="/menu">
@@ -51,11 +51,12 @@ export function CreateUser() {
                         />
 
                         <Button
+                        className='w-full'
                             type='submit'
                             variant='primary'
                             size='lg'
                         >
-                            Pedir
+                            Inície o seu pedido Pedir
                         </Button>
                     </form>
                 )
