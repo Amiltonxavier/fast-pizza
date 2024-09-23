@@ -12,7 +12,7 @@ export default function CartPage() {
     const { cart, cleanCart, totalInCart } = useCart()
 
     return (
-        <div className=''>
+        <div className='animate-fadeIn '>
             <div className='space-y-5'>
                 <Link href="/menu" className='flex items-center gap-2 font-mono text-blue-600 hover:underline tracking-widest text-sm'><ArrowLeft className='size-3' /> Voltar para o menu</Link>
                 {

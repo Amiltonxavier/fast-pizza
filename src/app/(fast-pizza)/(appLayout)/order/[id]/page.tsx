@@ -25,7 +25,7 @@ export default async function OrderFinally({ params }: OrderFinallyProps) {
     const orders = await orderService.getById(params.id)
 
     return (
-        <div className="space-y-8 w-full">
+        <div className="animate-fadeIn space-y-8 w-full">
             <div className="flex justify-between items-end">
                 <h3 className="inline-flex gap-2 font-medium text-xl sm:text-3xl font-mono">Estado do pedido #{params.id}</h3>
                 <div className="flex gap-4 items-center">
@@ -37,7 +37,7 @@ export default async function OrderFinally({ params }: OrderFinallyProps) {
                         </span>
                     }
                     <span
-                        className="flex justify-center items-center bg-emerald-500 rounded-full text-base sm:text-xl  font-medium font-mono uppercase text-white px-2 sm:px-4">
+                        className="flex justify-center items-center bg-emerald-500 rounded-full text-base sm:text-xl font-medium font-mono uppercase text-white px-2 sm:px-4">
                         Em preparo
                     </span>
                 </div>

@@ -15,7 +15,7 @@ export default async function Menu() {
 
   const products: ProductsProps[] = await productsService.get()
   return (
-    <div className='flex flex-col gap-4 divide-y-2 w-full'>
+    <div className='flex flex-col gap-4 divide-y-2 w-full animate-fadeIn'>
       <Suspense fallback={<Loading />}>
         {
           products.map((item) => {

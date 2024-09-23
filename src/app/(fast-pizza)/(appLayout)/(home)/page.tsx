@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 }
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="animate-fadeIn flex flex-col gap-16">
       <main className="flex flex-col justify-center gap-8">
         <div className="text-center px-4 space-y-8 w-full">
           <h2 className="font-bold text-xl sm:text-3xl tracking-widest text-zinc-700">
