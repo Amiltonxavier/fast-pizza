@@ -1,6 +1,11 @@
-import { DisplayUsername } from './display-username'
+import dynamic from 'next/dynamic'
+/* import { DisplayUsername } from './display-username' */
 import { Input } from './input'
 import Link from 'next/link'
+
+const DisplayUsername = dynamic(() => import('./display-username'), {
+  ssr: false,
+})
 
 export function Header() {
   return (
@@ -17,7 +22,7 @@ export function Header() {
           className='hidden sm:block px-4 py-3 max-w-72 focus-within:max-w-80 transition-all duration-150 bg-yellow-100/80 text-sm font-mono mx-auto'
         />
       </div>
-      {/*       <DisplayUsername /> */}
+      <DisplayUsername className='hidden sm:block  sm:text-xl text-lg ' />
     </nav>
   )
 }

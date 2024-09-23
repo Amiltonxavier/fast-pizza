@@ -1,21 +1,20 @@
 'use client'
 import { useUser } from '@/context/user'
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { type ComponentProps } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-export function DisplayUsername() {
+type DisplayUsernameProps = ComponentProps<'p'>
+
+
+export default function DisplayUsername({ className, ...props }: DisplayUsernameProps) {
   const { user } = useUser()
-  const [isClient, setIsClient] = useState(false)
 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  if (!isClient || !user) return null
   return (
     <p
-      className='hidden sm:block font-mono font-medium sm:font-semibold mx-auto uppercase sm:text-xl text-lg text-wrap'
+      className={twMerge('font-mono font-medium sm:font-semibold mx-auto uppercase text-wrap', className)}
+      {...props}
     >
-      {user.fullname}
+      {user?.fullname}
     </p>
   )
 }

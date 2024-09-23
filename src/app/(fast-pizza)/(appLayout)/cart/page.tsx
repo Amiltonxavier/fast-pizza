@@ -1,12 +1,16 @@
 'use client'
 
 import { Button } from '@/app/components/ui/Button'
-import { DisplayUsername } from '@/app/components/ui/display-username'
 import { ListProduct } from '@/app/components/ui/list-product'
 import { useCart } from '@/context/cart'
 import { ArrowLeft } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React from 'react'
+
+const DisplayUsername = dynamic(() => import('@/app/components/ui/display-username'), {
+    ssr: false,
+})
 
 export default function CartPage() {
     const { cart, cleanCart, totalInCart } = useCart()
@@ -19,7 +23,7 @@ export default function CartPage() {
                     totalInCart <= 0 ? <span className='block font-mono font-semibold text-xl'>'Seu carrinho ainda está vazio. Comece a adicionar algumas pizzas :)</span> : (
                         <>
                             <div>
-                                <h3 className='inline-flex gap-2 font-medium text-3xl'>Seu Carrinho, {/* <DisplayUsername /> */}</h3>
+                                <h3 className='inline-flex gap-2 font-medium text-3xl'>Seu Carrinho,  <DisplayUsername /> </h3>
                             </div>
                             <ul className='flex flex-col gap-6'>
                                 {

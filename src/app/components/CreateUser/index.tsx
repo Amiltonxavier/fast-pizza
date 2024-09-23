@@ -16,8 +16,8 @@ export function CreateUser() {
         event.preventDefault()
 
         if (!name) return
-        registerUser({ fullname: name })
         router.push('/menu')
+        registerUser({ fullname: name })
     }
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
@@ -51,7 +51,7 @@ export function CreateUser() {
                         />
 
                         <Button
-                        className='w-full'
+                            className='w-full'
                             type='submit'
                             variant='primary'
                             size='lg'
