@@ -11,6 +11,7 @@ import { GeoServices } from '@/api/location'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import type { GeoTypes } from '@/types/geo'
 import { LoaderCircle } from 'lucide-react'
+import { ConvertCurrency } from '@/utils/currency'
 
 
 
@@ -135,7 +136,7 @@ export function OrderForm() {
                                 variant='primary'
                                 size='sm'
                                 type='button'
-                                className='sm:w-[300px]'
+                                className='sm:w-[300px] py-4'
                                 onClick={handlegetGeoLocation}
                                 disabled={LoandingCoordinates}
                             >
@@ -174,7 +175,7 @@ export function OrderForm() {
                     {
                         isPending ?
                             <LoaderCircle className='animate-spin size-5' /> :
-                            `pedir agora ${getTotalPriceInCart()}`
+                            `pedir agora ${ConvertCurrency.CurrencytoKwanza((getTotalPriceInCart()))}`
                     }
 
                 </Button>

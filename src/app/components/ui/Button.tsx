@@ -19,9 +19,9 @@ type sizeProps = {
 
 const size: sizeProps = {
     default: 'h-10 px-4 py-2',
-    sm: 'py-1.5 px-2 text-sm',
     xs: 'h-6 px-2.5 text-xs',
-    lg: 'py-2 py-3 sm:py-4 sm:py-4 px-6 sm:px-5 text-xs sm:text-sm',
+    sm: 'py-2 sm:py-2.5 px-2 sm:px-3 text-xs sm:text-sm',
+    lg: 'py-3 sm:py-4 sm:py-4 px-6 sm:px-5 text-xs sm:text-sm',
     icon: 'h-10 w-10',
 };
 

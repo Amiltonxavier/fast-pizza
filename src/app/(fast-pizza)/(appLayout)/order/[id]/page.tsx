@@ -1,5 +1,6 @@
 import { OrderService } from "@/api/orders"
 import { ListProduct } from "@/app/components/ui/list-product"
+import { Status } from "@/app/components/ui/status"
 import type { ProductsProps } from "@/types/Cart"
 import { ConvertCurrency } from "@/utils/currency"
 import type { Metadata } from "next"
@@ -31,15 +32,13 @@ export default async function OrderFinally({ params }: OrderFinallyProps) {
                 <div className="flex gap-4 items-center">
                     {
                         orders.priority &&
-                        <span
-                            className="flex justify-center items-center bg-rose-500 rounded-full text-base sm:text-xl font-medium font-mono uppercase text-white px-2 sm:px-4">
+                        <Status status="priority">
                             Urgente
-                        </span>
+                        </Status>
                     }
-                    <span
-                        className="flex justify-center items-center bg-emerald-500 rounded-full text-base sm:text-xl font-medium font-mono uppercase text-white px-2 sm:px-4">
+                    <Status status="success">
                         Em preparo
-                    </span>
+                    </Status>
                 </div>
             </div>
             <div className="px-6 py-5 bg-stone-200 sm:flex justify-between">
